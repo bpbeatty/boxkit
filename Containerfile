@@ -15,6 +15,19 @@ RUN apk update && \
       xargs apk add && \
     rm /extra-packages
 
+WORKDIR /tmp
+RUN wget -P /tmp/ice \
+    https://github.com/AdoptOpenJDK/IcedTea-Web/releases/download/icedtea-web-1.8.8/icedtea-web-1.8.8.linux.bin.zip \
+    https://github.com/AdoptOpenJDK/IcedTea-Web/releases/download/icedtea-web-1.8.8/icedtea-web-1.8.8.linux.bin.zip.sha256.txt && \
+    cd ice && \
+    if sha256sum -c icedtea-web-1.8.8.linux.bin.zip.sha256.txt; then \
+      unzip -d /opt icedtea-web-1.8.8.linux.bin.zip; \
+      ln -s /opt/icedtea-web-image/bin/javaws /usr/local/bin/javaws; \
+    fi && \
+    cd .. && \
+    rm -rf /tmp/ice
+WORKDIR /
+
 RUN   ln -fs /bin/sh /usr/bin/sh && \
       ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/docker && \
       ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \
