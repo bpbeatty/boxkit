@@ -29,6 +29,7 @@ python3
 ripgrep
 speedtest-cli
 starship
+tmux
 tor
 vim
 vimdiff
