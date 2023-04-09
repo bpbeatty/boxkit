@@ -5,6 +5,8 @@ LABEL com.github.containers.toolbox="true" \
       summary="A cloud-native terminal experience" \
       maintainer="<brian@27megahertz.com>"
 
+COPY --from=docker.io/mikefarah/yq /usr/bin/yq /usr/bin/yq
+
 COPY extra-packages /
 RUN apk update && \
     apk upgrade && \
