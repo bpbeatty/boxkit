@@ -15,7 +15,9 @@ RUN apk update && \
       sed -rn '/-doc/! s/([a-z-]+[a-z]).*/\1/p' | \
       awk '{ print system("apk info \""$1"-doc\" > /dev/null") == 0 ? $1 "-doc" : "" }' | \
       xargs apk add && \
-    rm /extra-packages
+    rm /extra-packages && \
+    mkdir -p /etc/ssh/ssh_config.d && \
+    echo 'PKCS11Provider /usr/lib/opensc-pkcs11.so' | tee > /etc/ssh/ssh_config.d/01-ublue.conf
 
 WORKDIR /tmp
 RUN wget -P /tmp/ice \
