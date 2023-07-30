@@ -5,6 +5,7 @@ LABEL com.github.containers.toolbox="true" \
       summary="A cloud-native terminal experience" \
       maintainer="<brian@27megahertz.com>"
 
+ADD etc /etc
 COPY --from=docker.io/mikefarah/yq /usr/bin/yq /usr/bin/yq
 
 COPY extra-packages /
