@@ -5,6 +5,7 @@ LABEL com.github.containers.toolbox="true" \
       summary="A cloud-native terminal experience" \
       maintainer="<brian@27megahertz.com>"
 
+ADD etc /etc
 COPY --from=docker.io/mikefarah/yq /usr/bin/yq /usr/bin/yq
 
 COPY extra-packages /
@@ -15,9 +16,7 @@ RUN apk update && \
       sed -rn '/-doc/! s/([a-z-]+[a-z]).*/\1/p' | \
       awk '{ print system("apk info \""$1"-doc\" > /dev/null") == 0 ? $1 "-doc" : "" }' | \
       xargs apk add && \
-    rm /extra-packages && \
-    mkdir -p /etc/ssh/ssh_config.d && \
-    echo 'PKCS11Provider /usr/lib/opensc-pkcs11.so' | tee > /etc/ssh/ssh_config.d/01-ublue.conf
+    rm /extra-packages
 
 WORKDIR /tmp
 RUN wget -P /tmp/ice \
