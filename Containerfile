@@ -16,6 +16,7 @@ RUN apk update && \
       sed -rn '/-doc/! s/([a-z-]+[a-z]).*/\1/p' | \
       awk '{ print system("apk info \""$1"-doc\" > /dev/null") == 0 ? $1 "-doc" : "" }' | \
       xargs apk add && \
+    sed -i -e 's/set\ mouse=/\"set\ mouse=/g' /usr/share/vim/vim*/defaults.vim && \
     rm /extra-packages
 
 WORKDIR /tmp
