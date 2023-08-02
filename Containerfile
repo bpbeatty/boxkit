@@ -17,6 +17,7 @@ RUN apk update && \
       awk '{ print system("apk info \""$1"-doc\" > /dev/null") == 0 ? $1 "-doc" : "" }' | \
       xargs apk add && \
     sed -i -e 's/set\ mouse=/\"set\ mouse=/g' /usr/share/vim/vim*/defaults.vim && \
+    alias just='just --unstable' && \
     rm /extra-packages
 
 WORKDIR /tmp
