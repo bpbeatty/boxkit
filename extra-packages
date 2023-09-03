@@ -11,6 +11,7 @@ cosign
 dbus-x11
 direnv
 exa
+fdupes
 ffmpeg
 fzf
 github-cli
