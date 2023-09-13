@@ -3,7 +3,7 @@ FROM quay.io/toolbx-images/alpine-toolbox:edge
 LABEL com.github.containers.toolbox="true" \
       usage="This image is meant to be used with the toolbox or distrobox command" \
       summary="A cloud-native terminal experience" \
-      maintainer="<brian@27megahertz.com>"
+      maintainer="brian@27megahertz.com"
 
 ADD etc /etc
 COPY --from=docker.io/mikefarah/yq /usr/bin/yq /usr/bin/yq
