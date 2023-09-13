@@ -39,5 +39,6 @@ tor
 vim
 vimdiff
 wl-clipboard
+yubikey-manager
 zellij
 zstd
