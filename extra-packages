@@ -23,12 +23,12 @@ make
 micro
 ncdu
 ncurses
-neofetch
 neovim
 nmap-ncat
 npm
 opensc
 openjdk8
+openldap-clients
 plocate
 python3
 ripgrep
