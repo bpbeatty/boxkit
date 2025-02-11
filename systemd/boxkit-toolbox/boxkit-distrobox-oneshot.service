@@ -1,0 +1,8 @@
+[Unit]
+Description=boxkit Toolbox for your distrobox fun
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/distrobox assemble create --replace -f /etc/distrobox/distrobox.ini -n boxkit
+ExecStart=/usr/bin/distrobox enter boxkit
+RemainAfterExit=true
