@@ -16,6 +16,7 @@ ffmpeg
 fzf
 github-cli
 helix
+iperf3
 jq
 just
 less
